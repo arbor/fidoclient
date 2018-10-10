@@ -1,10 +1,10 @@
-# Arbor Enterprise Manager SDK
+# Arbor Enterprise Manager Client
 
-This is a simple SDK to use Arbor Edge Manager's public facing API.
+This is a simple client to use Arbor Edge Manager's public facing API.
 
 ## Installation:
 ```bash
-sudo pip install git+ssh://git@git.arbor.net/df1/aem_sdk.git
+sudo pip install git+ssh://git@git.arbor.net/df1/api-client.git
 ```
 
 **Note:** You must have your public key on git.arbor.net
@@ -14,7 +14,7 @@ sudo pip install git+ssh://git@git.arbor.net/df1/aem_sdk.git
 Import the package:
 
 ```python
-from aem_sdk.aem import ArborEnterpriseManager
+from aemclient.aem import ArborEnterpriseManager
 dev = ArborEnterpriseManager(<host>, <apitoken>, api_version=<api_version, eg. 'v1'>)
 ```
 
