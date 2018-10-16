@@ -1,7 +1,7 @@
 from setuptools import setup
 
-NAME = 'aem-client'
-PACKAGE_NAME = 'aemclient'
+NAME = 'edm-client'
+PACKAGE_NAME = 'edmclient'
 
 
 def readme():
@@ -11,7 +11,7 @@ def readme():
 
 setup(name=NAME,
       version='1.0',
-      description='',
+      description='Edge Defense Manager Client',
       long_description=readme(),
       classifiers=[
         'Development Status :: Alpha',
@@ -20,8 +20,8 @@ setup(name=NAME,
       ],
       keywords='',
       url='',
-      author='Steve William, Arbor Networks, Inc.',
-      author_email='steve.william@netscout.com',
+      author='Steve William, NETSCOUT Systems, Inc.',
+      author_email='swilliam@netscout.com',
       license='MIT',
       packages=[PACKAGE_NAME],
       install_requires=[

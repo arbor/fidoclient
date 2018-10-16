@@ -1,0 +1,20 @@
+stages:
+  - lint
+  - test
+
+flake8:
+  stage: lint
+  image: python:3.6
+  script:
+    - pip install flake8==3.5.0
+    - flake8 $(find ./ -name "*.py")
+
+test:
+  stage: test
+  image: python:3.6
+  script:
+    - pip install Flask==1.0.2
+    - pip install requests==2.18.4
+    - pip install nose==1.3.7
+    - export PYTHONPATH=$PYTHONPATH:$(pwd)/edmclient
+    - nosetests
