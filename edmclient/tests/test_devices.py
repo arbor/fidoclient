@@ -2,12 +2,12 @@ import json
 import logging
 import unittest
 from unittest.mock import patch
-from aemclient.aem import ArborEnterpriseManager
+from edmclient.edm import EdgeDefenseManager as Fido
 
 LOG = logging.getLogger('TestDevices')
 
-AEM = 'test.aem.arbor.net'
-AEM_TOKEN = 'xLxD89YS0ZJc9f7JAOTZf_wchzjLqIMMCFV8tFue'
+FIDO = 'test.fido.arbor.net'
+FIDO_TOKEN = 'xLxD89YS0ZJc9f7JAOTZf_wchzjLqIMMCFV8tFue'
 HEADERS = {'Server': 'nginx/1.14.0',
            'Date': 'Fri, 05 Oct 2018 18:31:39 GMT',
            'Content-Type': 'application/json',
@@ -102,14 +102,14 @@ def mocked_requests_patch(*args, **kwargs):
 class TestDevices(unittest.TestCase):
 
     def setUp(self):
-        self.aem = ArborEnterpriseManager(AEM, AEM_TOKEN, api_version='v1')
+        self.fido = Fido(FIDO, FIDO_TOKEN, api_version='v1')
 
     @patch('requests.get', side_effect=mocked_requests_get)
     def test_get_all_devices(self, mock_get):
         """
         Get all AEDs
         """
-        response = self.aem.devices.show()
+        response = self.fido.devices.show()
         self.assertEqual(response['status_code'], 200)
 
     @patch('requests.get', side_effect=mocked_requests_get)
@@ -117,7 +117,7 @@ class TestDevices(unittest.TestCase):
         """
         Get single AEDs
         """
-        response = self.aem.devices.show(id=1)
+        response = self.fido.devices.show(id=1)
         self.assertEqual(response['status_code'], 200)
 
     @patch('requests.post', side_effect=mocked_requests_post)
@@ -125,9 +125,9 @@ class TestDevices(unittest.TestCase):
         """
         Add AED
         """
-        response = self.aem.devices.add(host='test.aed.arbor.net',
-                                        apiToken='sample',
-                                        name='TEST AED')
+        response = self.fido.devices.add(host='test.aed.arbor.net',
+                                         apiToken='sample',
+                                         name='TEST AED')
         self.assertEqual(response['status_code'], 201)
 
     @patch('requests.delete', side_effect=mocked_requests_delete)
@@ -136,13 +136,13 @@ class TestDevices(unittest.TestCase):
         Delete AED
         """
         # No device specified
-        response = self.aem.devices.remove()
+        response = self.fido.devices.remove()
         self.assertEqual(response['status_code'], 405)
         # Device ID specified
-        response = self.aem.devices.remove(id=1)
+        response = self.fido.devices.remove(id=1)
         self.assertEqual(response['status_code'], 204)
         # Delete non-existent AED
-        response = self.aem.devices.remove(id=2000)
+        response = self.fido.devices.remove(id=2000)
         self.assertEqual(response['status_code'], 405)
 
     @patch('requests.put', side_effect=mocked_requests_put)
@@ -150,9 +150,9 @@ class TestDevices(unittest.TestCase):
         """
         Update single AEDs
         """
-        response = self.aem.devices.update(host='new_aed.arbor.net',
-                                           apiToken='new_token',
-                                           name='NEW AED')
+        response = self.fido.devices.update(host='new_aed.arbor.net',
+                                            apiToken='new_token',
+                                            name='NEW AED')
         self.assertEqual(response['status_code'], 200)
 
     @patch('requests.patch', side_effect=mocked_requests_patch)
@@ -160,7 +160,7 @@ class TestDevices(unittest.TestCase):
         """
         Partial update single AEDs
         """
-        response = self.aem.devices.partial_update(name='NEW PATCHED AED')
+        response = self.fido.devices.partial_update(name='NEW PATCHED AED')
         self.assertEqual(response['status_code'], 200)
 
 

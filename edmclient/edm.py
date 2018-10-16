@@ -5,9 +5,9 @@ from .cti import Cti
 from .configuration import Configuration
 
 
-class ArborEnterpriseManager(object):
+class EdgeDefenseManager(object):
     """
-    Define the Arbor Enterprise Manager device
+    Define the fido device
     """
 
     def __init__(self, *args, **kwargs):

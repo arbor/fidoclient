@@ -1,6 +1,8 @@
-# Arbor Enterprise Manager Client
+[![pipeline status](https://git.arbor.net/df1/api-client/badges/master/pipeline.svg)](https://git.arbor.net/df1/api-client/commits/master)
 
-This is a simple client to use Arbor Edge Manager's public facing API.
+# Edge Defense Manager Client
+
+This is a simple client to use Edge Defense Manager's public facing API.
 
 ## Installation:
 ```bash
@@ -14,8 +16,8 @@ sudo pip install git+ssh://git@git.arbor.net/df1/api-client.git
 Import the package:
 
 ```python
-from aemclient.aem import ArborEnterpriseManager
-dev = ArborEnterpriseManager(<host>, <apitoken>, api_version=<api_version, eg. 'v1'>)
+from edmclient.edm import EdgeDefenseManager
+dev = EdgeDefenseManager(<host>, <apitoken>, api_version=<api_version, eg. 'v1'>)
 ```
 
 ### Devices
