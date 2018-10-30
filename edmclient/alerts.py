@@ -71,8 +71,8 @@ class Threats(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.alerts.threats.show(start='2018-09-08T00:00:00Z')
         """
         return self._get(**kwargs)
@@ -102,8 +102,8 @@ class Counts(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.alerts.ddos.counts.show(start='2018-09-08T00:00:00Z')
         """
         return self._get(**kwargs)
@@ -143,8 +143,8 @@ class Ddos(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.alerts.ddos.show(start='2018-09-08T00:00:00Z')
         """
         return self._get(**kwargs)

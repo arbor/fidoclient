@@ -15,8 +15,8 @@ class Cti(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.configuration.cti.show()
         """
         return self._get()
@@ -38,8 +38,8 @@ class Cti(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.configuration.cti.update(cti_token='ajfdgFJGFGmh27hnbv')
         """
         return self._post(**kwargs)

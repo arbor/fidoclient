@@ -25,8 +25,8 @@ class Edge(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.traffic.edge.show(start='2018-09-08T00:00:00Z')
         """
         return self._get(**kwargs)
