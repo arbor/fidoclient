@@ -23,8 +23,8 @@ class Devices(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.devices.add(host='aed_1.example.com',
                             apiToken='WWPi7_',
                             name='AED_1')
@@ -45,13 +45,13 @@ class Devices(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.devices.remove(id=1)
         """
         return self._delete(item=id)
 
-    def show(self, id=None):
+    def show(self, id=None, **kwargs):
         """
         Show a specific device or all devices.
 
@@ -66,12 +66,12 @@ class Devices(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.devices.show()
         >>> dev.devices.show(id=1)
         """
-        return self._get(item=id)
+        return self._get(item=id, **kwargs)
 
     def update(self, id=None, **kwargs):
         """
@@ -89,8 +89,8 @@ class Devices(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.devices.update(id=1,
                                host='aed_1.example.com',
                                apiToken='WWPi7_',
@@ -115,8 +115,8 @@ class Devices(Rest):
         Examples
         --------
 
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.devices.update(id=1,
                                name='NEW_AED_1')
         >>> dev.devices.update(id=1,

@@ -21,8 +21,8 @@ class Insights(Rest):
 
         Examples
         --------
-        >>> from aem_sdk.aem import ArborEnterpriseManager
-        >>> dev = ArborEnterpriseManager('defone_1.example.com', 'wxY8fM3')
+        >>> from edm_sdk.edm import EdgeDefenseManager
+        >>> dev = EdgeDefenseManager('fido_1.example.com', 'wxY8fM3')
         >>> dev.cti.insights.show(indicatorValue='1.2.3.4')
         """
         return self._get(**kwargs)
