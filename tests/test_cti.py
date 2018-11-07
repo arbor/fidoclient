@@ -25,7 +25,7 @@ def mocked_requests_get(*args, **kwargs):
     """
     Use mock GET response
     """
-    ip = kwargs['params']['indicatorValue']
+    ip = args[0].url.split('=')[1]
     response = {'data': ip}
     return MockResponse(json.dumps(response), 200, HEADERS)
 
@@ -35,7 +35,7 @@ class TestCti(unittest.TestCase):
     def setUp(self):
         self.fido = Fido(FIDO, FIDO_TOKEN, api_version='v1')
 
-    @patch('requests.get', side_effect=mocked_requests_get)
+    @patch('requests.Session.send', side_effect=mocked_requests_get)
     def test_get_cti(self, mock_get):
         """
         Get CTI data

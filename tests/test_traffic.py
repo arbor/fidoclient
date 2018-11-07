@@ -34,7 +34,7 @@ class TestTraffic(unittest.TestCase):
     def setUp(self):
         self.fido = Fido(FIDO, FIDO_TOKEN, api_version='v1')
 
-    @patch('requests.get', side_effect=mocked_requests_get)
+    @patch('requests.Session.send', side_effect=mocked_requests_get)
     def test_get_traffic(self, mock_get):
         """
         Get edge traffic

@@ -16,5 +16,6 @@ test:
     - pip install Flask==1.0.2
     - pip install requests==2.18.4
     - pip install nose==1.3.7
+    - pip install coverage==4.5.1
     - export PYTHONPATH=$PYTHONPATH:$(pwd)/edmclient
-    - nosetests
+    - nosetests --with-coverage --cover-package=edmclient

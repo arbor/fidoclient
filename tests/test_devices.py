@@ -55,7 +55,7 @@ def mocked_requests_delete(*args, **kwargs):
     """
     Use mock DELETE response
     """
-    url = args[0]
+    url = args[0].url
     id = url.split('/')[-1]
     if id == '1':
         response = {}
@@ -104,7 +104,7 @@ class TestDevices(unittest.TestCase):
     def setUp(self):
         self.fido = Fido(FIDO, FIDO_TOKEN, api_version='v1')
 
-    @patch('requests.get', side_effect=mocked_requests_get)
+    @patch('requests.Session.send', side_effect=mocked_requests_get)
     def test_get_all_devices(self, mock_get):
         """
         Get all AEDs
@@ -112,7 +112,7 @@ class TestDevices(unittest.TestCase):
         response = self.fido.devices.show()
         self.assertEqual(response['status_code'], 200)
 
-    @patch('requests.get', side_effect=mocked_requests_get)
+    @patch('requests.Session.send', side_effect=mocked_requests_get)
     def test_get_one_devices(self, mock_get):
         """
         Get single AEDs
@@ -120,7 +120,7 @@ class TestDevices(unittest.TestCase):
         response = self.fido.devices.show(id=1)
         self.assertEqual(response['status_code'], 200)
 
-    @patch('requests.post', side_effect=mocked_requests_post)
+    @patch('requests.Session.send', side_effect=mocked_requests_post)
     def test_add_devices(self, mock_post):
         """
         Add AED
@@ -130,7 +130,7 @@ class TestDevices(unittest.TestCase):
                                          name='TEST AED')
         self.assertEqual(response['status_code'], 201)
 
-    @patch('requests.delete', side_effect=mocked_requests_delete)
+    @patch('requests.Session.send', side_effect=mocked_requests_delete)
     def test_delete_devices(self, mock_delete):
         """
         Delete AED
@@ -145,7 +145,7 @@ class TestDevices(unittest.TestCase):
         response = self.fido.devices.remove(id=2000)
         self.assertEqual(response['status_code'], 405)
 
-    @patch('requests.put', side_effect=mocked_requests_put)
+    @patch('requests.Session.send', side_effect=mocked_requests_put)
     def test_partial_update_devices(self, mock_patch):
         """
         Update single AEDs
@@ -155,7 +155,7 @@ class TestDevices(unittest.TestCase):
                                             name='NEW AED')
         self.assertEqual(response['status_code'], 200)
 
-    @patch('requests.patch', side_effect=mocked_requests_patch)
+    @patch('requests.Session.send', side_effect=mocked_requests_patch)
     def test_update_devices(self, mock_patch):
         """
         Partial update single AEDs
