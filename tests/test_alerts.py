@@ -34,7 +34,7 @@ class TestAlerts(unittest.TestCase):
     def setUp(self):
         self.fido = Fido(FIDO, FIDO_TOKEN, api_version='v1')
 
-    @patch('requests.get', side_effect=mocked_requests_get)
+    @patch('requests.Session.send', side_effect=mocked_requests_get)
     def test_get_threats(self, mock_get):
         """
         Get Threats
@@ -42,7 +42,7 @@ class TestAlerts(unittest.TestCase):
         response = self.fido.alerts.threats.show()
         self.assertEqual(response['status_code'], 200)
 
-    @patch('requests.get', side_effect=mocked_requests_get)
+    @patch('requests.Session.send', side_effect=mocked_requests_get)
     def test_get_ddos_alerts(self, mock_get):
         """
         Get DDoS alerts
@@ -50,7 +50,7 @@ class TestAlerts(unittest.TestCase):
         response = self.fido.alerts.ddos.show()
         self.assertEqual(response['status_code'], 200)
 
-    @patch('requests.get', side_effect=mocked_requests_get)
+    @patch('requests.Session.send', side_effect=mocked_requests_get)
     def test_get_ddos_alert_counts(self, mock_get):
         """
         Get DDoS alert counts

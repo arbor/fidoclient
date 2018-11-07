@@ -1,8 +1,14 @@
 [![pipeline status](https://git.arbor.net/df1/api-client/badges/master/pipeline.svg)](https://git.arbor.net/df1/api-client/commits/master)
 
-# Edge Defense Manager Client
+[![coverage report](https://git.arbor.net/df1/api-client/badges/master/coverage.svg)](https://git.arbor.net/df1/api-client/commits/master)
+
+# Edge Defense Manager Client v0.9
 
 This is a simple client to use Edge Defense Manager's public facing API.
+
+## Requirements
+* Python (tested on Python 2.7 and Python 3.6.5)
+* Requests
 
 ## Installation:
 ```bash
@@ -11,7 +17,7 @@ sudo pip install git+ssh://git@git.arbor.net/df1/api-client.git
 
 **Note:** You must have your public key on git.arbor.net
 
-## Using the SDK:
+## Using the Client:
 
 Import the package:
 
@@ -107,4 +113,18 @@ Add or Update CTI configuration:
 
 ```python
 dev.configuration.cti.update(cti_token='ajfdgFJGFGmh27hnbv')
+```
+
+## Running unit tests
+
+Make sure you have `nose` installed:
+
+```bash
+pip3 install nose
+```
+
+Then from the package directory run:
+
+```bash
+nosetests
 ```

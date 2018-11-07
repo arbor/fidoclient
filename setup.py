@@ -10,13 +10,13 @@ def readme():
 
 
 setup(name=NAME,
-      version='1.0',
+      version='0.9',
       description='Edge Defense Manager Client',
       long_description=readme(),
       classifiers=[
         'Operating System :: OS Independent',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2.7+, 3.6.5+',
       ],
       keywords='',
       url='',

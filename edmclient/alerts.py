@@ -25,7 +25,7 @@ class Threats(Rest):
               Example: -time,pkt.src,-pkt.dport
               A comma-separated list of field names for sorting the query
               results. The fields are sorted from left to right. Prefix a
-              field name with - to sort that field’s values in descending
+              field name with - to sort that field's values in descending
               order, otherwise the field values are sorted in ascending
               order.
 

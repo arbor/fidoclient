@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 from edmclient.edm import EdgeDefenseManager as Fido
 
-LOG = logging.getLogger('TestCti')
+LOG = logging.getLogger('TestCtiConfig')
 
 FIDO = 'test.fido.arbor.net'
 FIDO_TOKEN = 'xLxD89YS0ZJc9f7JAOTZf_wchzjLqIMMCFV8tFue'
@@ -50,7 +50,7 @@ class TestConfiguration(unittest.TestCase):
     def setUp(self):
         self.fido = Fido(FIDO, FIDO_TOKEN, api_version='v1')
 
-    @patch('requests.get', side_effect=mocked_requests_get)
+    @patch('requests.Session.send', side_effect=mocked_requests_get)
     def test_get_config(self, mock_get):
         """
         Get CTI configuration
@@ -61,7 +61,7 @@ class TestConfiguration(unittest.TestCase):
                      'passivetotal_user', 'shodan_token']:
             self.assertIn(_key, response['body']['data'])
 
-    @patch('requests.post', side_effect=mocked_requests_post)
+    @patch('requests.Session.send', side_effect=mocked_requests_post)
     def test_update_cti_config(self, mock_post):
         """
         Update CTI configuration
