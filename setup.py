@@ -16,7 +16,7 @@ setup(name=NAME,
       classifiers=[
         'Operating System :: OS Independent',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 2.7+, 3.6.5+',
+        'Programming Language :: Python',
       ],
       keywords='',
       url='',

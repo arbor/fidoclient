@@ -12,10 +12,9 @@ This is a simple client to use Edge Defense Manager's public facing API.
 
 ## Installation:
 ```bash
-sudo pip install git+ssh://git@git.arbor.net/df1/api-client.git
+sudo pip install -e git://github.com/arbor/fidoclient.git@v0.9#egg=edmclient
 ```
 
-**Note:** You must have your public key on git.arbor.net
 
 ## Using the Client:
 
