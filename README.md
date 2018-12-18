@@ -4,7 +4,7 @@
 
 # Edge Defense Manager Client v0.9
 
-This is a simple client to use Edge Defense Manager's public facing API.
+This simple client allows you to use Edge Defense Manager's public API.
 
 ## Requirements
 * Python (tested on Python 2.7 and Python 3.6.5)
@@ -16,7 +16,7 @@ sudo pip install -e git://github.com/arbor/fidoclient.git@v0.9#egg=edmclient
 ```
 
 
-## Using the Client:
+## Using the Client
 
 Import the package:
 
@@ -25,7 +25,7 @@ from edmclient.edm import EdgeDefenseManager
 dev = EdgeDefenseManager(<host>, <apitoken>, api_version=<api_version, eg. 'v1'>)
 ```
 
-### Devices
+### Managing Devices
 
 Add a device:
 
@@ -48,7 +48,7 @@ Remove devices:
 dev.devices.remove(id=1)
 ```
 
-Update device:
+Update a device:
 
 ```python
 dev.devices.update(id=1,
@@ -57,14 +57,14 @@ dev.devices.update(id=1,
                    name='AED_1')
 ```
 
-Partial update device:
+Partially update a device:
 
 ```python
 dev.devices.update(id=1, name='NEW_AED_1')
 dev.devices.update(id=1, apiToken='sdf79_kjI')
 ```
 
-### Alerts
+### Viewing Alerts
 
 View threats:
 
@@ -84,7 +84,7 @@ View DDoS counts:
 dev.alerts.ddos.count.show(start='2018-09-08T00:00:00Z')
 ```
 
-### Traffic
+### Viewing Traffic
 
 View traffic:
 
@@ -92,7 +92,7 @@ View traffic:
 dev.traffic.edge.show(start='2018-09-08T00:00:00Z')
 ```
 
-### Contextual Threat Intelligence (CTI)
+### Viewing Contextual Threat Intelligence (CTI)
 
 View CTI data:
 
@@ -100,29 +100,29 @@ View CTI data:
 dev.cti.insights.show(indicatorValue='1.2.3.4')
 ```
 
-### CTI Configuration
+### Configuring CTI
 
-View CTI configuration:
+View the CTI configuration:
 
 ```python
 dev.configuration.cti.show()
 ```
 
-Add or Update CTI configuration:
+Add or Update the CTI configuration:
 
 ```python
 dev.configuration.cti.update(cti_token='ajfdgFJGFGmh27hnbv')
 ```
 
-## Running unit tests
+## Running Unit Tests
 
-Make sure you have `nose` installed:
+If `nose` is not installed, then run:
 
 ```bash
 pip3 install nose
 ```
 
-Then from the package directory run:
+Run the following command from the package directory:
 
 ```bash
 nosetests
