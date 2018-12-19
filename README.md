@@ -1,7 +1,3 @@
-[![pipeline status](https://git.arbor.net/df1/api-client/badges/master/pipeline.svg)](https://git.arbor.net/df1/api-client/commits/master)
-
-[![coverage report](https://git.arbor.net/df1/api-client/badges/master/coverage.svg)](https://git.arbor.net/df1/api-client/commits/master)
-
 # Edge Defense Manager Client v0.9
 
 This is a simple client to use Edge Defense Manager's public facing API.
