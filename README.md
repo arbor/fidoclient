@@ -11,6 +11,34 @@ This simple client allows you to use Edge Defense Manager's public API.
 sudo pip install -e git://github.com/arbor/fidoclient.git@v0.9#egg=edmclient
 ```
 
+## Generating an API Token From Edge Defense Manager
+
+Access to the Edge Defense Manager API requires an API token for authentication. You generate the token in the EDM command line interface (CLI).
+
+The API token is associated with the user account under which it is generated. Any user can generate an EDM API token, except for the root user.
+
+To generate an EDM API token:
+
+1. Establish an SSH connection to EDM.
+
+2. Log in to the operating system CLI with your EDM credentials.
+
+3. To create the token, enter **edm\_apitoken\_gen**
+
+  The system responds with the new API token, for example:
+  ```json
+  { "admin": "LMttPZ45FXnJT6IokVh6Px-otiKGDMkUdyQmJMWmWGz" }
+  ```
+
+4. For later use, copy the token and then paste it to a text file.
+
+5. To log out of the CLI, enter **exit**
+
+To View or delete a token, use one of the following commands.
+
+* edm\_apitoken\_show
+
+* edm\_apitoken\_delete
 
 ## Using the Client
 
