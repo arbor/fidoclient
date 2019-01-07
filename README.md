@@ -24,11 +24,11 @@ To generate an EDM API token:
 2. Log in to the operating system CLI with your EDM credentials.
 
 3. To create the token, enter **edm\_apitoken\_gen**
-
-  The system responds with the new API token, for example:
-  ```json
-  { "admin": "LMttPZ45FXnJT6IokVh6Px-otiKGDMkUdyQmJMWmWGz" }
-  ```
+    
+    The system responds with the new API token, for example:
+    ```json
+    { "admin": "LMttPZ45FXnJT6IokVh6Px-otiKGDMkUdyQmJMWmWGz" }
+    ```
 
 4. For later use, copy the token and then paste it to a text file.
 
