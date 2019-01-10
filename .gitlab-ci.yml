@@ -30,3 +30,18 @@ publish-github:
     - apk update && apk add git
     - git push -u https://${GITHUB_USER_NAME}:${GITHUB_USER_TOKEN}@github.com/arbor/fidoclient.git HEAD:master
     - git push -u https://${GITHUB_USER_NAME}:${GITHUB_USER_TOKEN}@github.com/arbor/fidoclient.git ${CI_COMMIT_TAG}
+
+publish-pypi:
+  stage: publish
+  image: python:3.6-alpine
+  variables:
+    TWINE_USERNAME: ${PYPI_USERNAME}
+    TWINE_PASSWORD: ${PYPI_PASSWORD}
+  only:
+    - tags
+  before_script:
+    - pip install twine
+    - sed -i "s/<version#>/${CI_COMMIT_TAG}/g" setup.py
+    - python setup.py sdist bdist_wheel
+  script:
+    - twine upload --repository-url ${PYPI_PROD_URL} dist/*
