@@ -2,15 +2,16 @@ from setuptools import setup
 
 NAME = 'edm-client'
 PACKAGE_NAME = 'edmclient'
+VERSION = '<version#>'
 
 
 def readme():
-    with open('README.md') as f:
+    with open('README.rst') as f:
         return f.read()
 
 
 setup(name=NAME,
-      version='0.9',
+      version=VERSION,
       description='Edge Defense Manager Client',
       long_description=readme(),
       classifiers=[
