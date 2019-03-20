@@ -30,7 +30,10 @@ class Rest(object):
         # If content is not json then it is
         # probably an error. So return
         try:
-            body = json.loads(response.content)
+            # Decoding from UTF-8 is necessary for Python versions below 3.6
+            # https://docs.python.org/3/whatsnew/3.6.html#json
+            body = json.loads(response.content if type(response.content) == str
+                              else response.content.decode('utf-8'))
         except ValueError:
             body = {'error': response.reason}
         formated = {
