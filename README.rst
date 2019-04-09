@@ -59,7 +59,7 @@ Import the package:
 .. code:: python
 
     from edmclient.edm import EdgeDefenseManager
-    dev = EdgeDefenseManager(<host>, <apitoken>, api_version=<api_version, eg. 'v1'>)
+    dev = EdgeDefenseManager(<host>, <apitoken>, api_version=<api_version, eg. 'v1'>, raise_on_error=<True|False>)
 
 Managing Devices
 ~~~~~~~~~~~~~~~~

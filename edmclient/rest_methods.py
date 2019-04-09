@@ -4,19 +4,22 @@
 
 import requests
 import json
+from .exceptions import EdmApiClientError, EdmApiServerError
 
 PREFIX = '/api/'
 HTTPS = 'https://'
+ERR_STR = 'EDM API Call failed with status {status_code}: {body}'
 
 
 class Rest(object):
     """
     Class with methods to make the api calls
     """
-    def __init__(self, host, apitoken, api_version):
+    def __init__(self, host, apitoken, api_version, raise_on_error=False):
         self.host = host
         self.apitoken = apitoken
         self.apiversion = api_version
+        self.raise_on_error = raise_on_error
         self._headers = {
                     'Authorization': 'NSAPITOKENID {}'.format(self.apitoken),
                     }
@@ -43,6 +46,20 @@ class Rest(object):
                    }
         return formated
 
+    @staticmethod
+    def _raise_on_error(response):
+        """
+        Raise an exception if the response contains an unsuccessful status code
+        """
+        if 400 <= response['status_code'] < 500:
+            raise EdmApiClientError(ERR_STR.format(
+                status_code=response['status_code'],
+                body=response['body']))
+        elif 500 <= response['status_code'] < 600:
+            raise EdmApiServerError(ERR_STR.format(
+                status_code=response['status_code'],
+                body=response['body']))
+
     def _make_request(self, rest_method, item=None, **kwargs):
         """
         Make requests
@@ -58,8 +75,10 @@ class Rest(object):
         prepped = s.prepare_request(req)
         if rest_method in ['POST', 'PUT', 'PATCH']:
             prepped.headers['Content-Type'] = 'application/json'
-        response = s.send(prepped, verify=False)
-        return self._format_response(response)
+        response = self._format_response(s.send(prepped, verify=False))
+        if self.raise_on_error:
+            self._raise_on_error(response)
+        return response
 
     def _post(self, **kwargs):
         """

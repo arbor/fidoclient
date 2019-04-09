@@ -18,6 +18,8 @@ class EdgeDefenseManager(object):
 
         Keyword Arguments:
             api_version: API version (Default: v1)
+            raise_on_error: Raise exception on failed Rest calls
+                            (Default: False)
         """
         if not args or len(args) < 2:
             raise AttributeError('Missing required positional arguments '
@@ -28,6 +30,7 @@ class EdgeDefenseManager(object):
         self.host = args[0]
         self.apitoken = args[1]
         self.apiversion = kwargs['api_version']
+        self.raise_on_error = kwargs.get('raise_on_error', False)
         self.devices = Devices(*args, **kwargs)
         self.alerts = Alerts(*args, **kwargs)
         self.traffic = Traffic(*args, **kwargs)
