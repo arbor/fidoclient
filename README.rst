@@ -1,5 +1,5 @@
-Edge Defense Manager Client v0.9.1
-==================================
+Edge Defense Manager Client
+===========================
 
 This simple client allows you to use Edge Defense Manager's public API.
 
