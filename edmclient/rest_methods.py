@@ -21,7 +21,7 @@ class Rest(object):
         self.apiversion = api_version
         self.raise_on_error = raise_on_error
         self._headers = {
-                    'Authorization': 'NSAPITOKENID {}'.format(self.apitoken),
+                    'X-Arbux-APIToken': self.apitoken,
                     }
 
     @staticmethod
@@ -113,4 +113,4 @@ class Rest(object):
         REST PUT method
         """
         item = '/' + str(item) if item else ''
-        return self._make_request('PATCH', item=item, data=json.dumps(kwargs))
+        return self._make_request('PUT', item=item, data=json.dumps(kwargs))

@@ -32,13 +32,11 @@ To generate an EDM API token:
 
 #. Log in to the operating system CLI with your EDM credentials.
 
-#. To create the token, enter **edm\_apitoken\_gen**.
+#. To create the token, enter 'services aaa local apitoken generate <username> <one-word-description>'.
 
    The system responds with the new API token, for example:
 
-   .. code:: json
-
-    { "admin": "LMttPZ45FXnJT6IokVh6Px-otiKGDMkUdyQmJMWmWGz" }
+    Added token: LMttPZ45FXnJT6IokVh6Px-otiKGDMkUdyQmJMWmWGz
     
 
 #. For later use, copy the token and then paste it to a text file.
@@ -47,9 +45,9 @@ To generate an EDM API token:
 
 To View or delete a token, use one of the following commands.
 
-* edm\_apitoken\_show
+* services aaa local apitoken show
 
-* edm\_apitoken\_delete
+* services aaa local apitoken remove
 
 Using the Client
 ----------------
@@ -154,6 +152,51 @@ Add or Update the CTI configuration:
 .. code:: python
 
     dev.configuration.cti.update(cti_token='ajfdgFJGFGmh27hnbv')
+
+Executive Reporting
+~~~~~~~~~~~~~~~~~~~
+
+Create a new report:
+
+.. code:: python
+
+    dev.reports.create(name='Example Report')
+
+Update a report:
+
+.. code:: python
+
+    dev.reports.update(id=1, name='Updated Example Report')
+
+Partial update a report:
+
+.. code:: python
+
+    dev.reports.partial_update(id=1, name='Updated Example Report')
+
+View a condensed list of all reports:
+
+.. code:: python
+
+    dev.reports.show(page=1, pageSize=100, order='asc', orderBy='createdAt')
+
+View single report:
+
+.. code:: python
+
+    dev.reports.show(id=3)
+
+View report status:
+
+.. code:: python
+
+    dev.reports.show(id=3, show_status=True)
+
+Delete a report:
+
+.. code:: python
+
+    dev.reports.delete(id=1)
 
 Running Unit Tests
 ------------------
